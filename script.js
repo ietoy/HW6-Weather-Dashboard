@@ -4,7 +4,7 @@ $(document).ready(function() {
 var btnList = document.querySelector("#btn-list");
 
 // This is our array holding city names that the user has searched for
-var cityList = [];
+var cityList = ["Denver", "Oakland"];
 
 // This function adds buttons with the history of searched city names below the search bar
 $("#add-city").on("click", function() {
@@ -41,7 +41,7 @@ function renderBtns() {
     var currentCity = $(this).attr("data-city");
     var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
     var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
-
+    console.log(queryURL);
     // GETTING UNCAUGHT TYPE ERROR: $.AJAX IS NOT A FUNCTION HERE, PLZ HALP!
     $.ajax({
     url: queryURL,
@@ -49,9 +49,12 @@ function renderBtns() {
     }).then(function(response) {
 
       // var results = response;
-      console.log(response);
+      console.log("response");
     });
+
   });
+
+// close doc ready
 });
 
 // Open Weather NAME & COUNTRY path
