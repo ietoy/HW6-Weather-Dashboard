@@ -24,16 +24,18 @@
       <!-- Sidebar -->
       <div class="col-2 bg-light vh-100">
         <div class="m-3">
+
+          <!-- Search bar -->
           <form>
             <label>
               <h3 class="text-weight-bold">Search for a City:</h3>
             </label>
             <input type="text" name="citySearch">
-            <input id="add-city" type="submit" value="Search">
+            <input id="add-city" class="search-city" type="submit" value="Search">
           </form>
-              
+          
+          <!-- Button List -->
           <div id="btn-list">
-
           </div>
 
         </div>
@@ -42,13 +44,15 @@
 
       <!-- Main Display -->
       <div class="col-10">
-        <div class="card text-block bg-light w-50 mt-3">
-          <div class="card-header">
-            <h2>
-            City and Date Here
-            </h2>
-            <div>Icon Here</div>
+        <div class="main-display">
+          <!-- START CARD -->
+          <div class="card text-block bg-light mt-3 mr-3">
+            <div class="card-header">
+              <h2>
+                City and Date Here <div>Icon Here</div>
+              </h2>
           </div>
+            
           <div class="card-body">
             <p class="card-text">Temp</p>
             <br>
@@ -58,21 +62,24 @@
             <br>
             <p class="card-text">UV Index</p>
           </div>
-        <!-- END CARD -->
+          <!-- END CARD -->
+          </div>
         </div>
+
+
 
         <!-- FIVE DAY FORECAST CARDS -->
         <div class="card text-white bg-primary float-left mt-3 mr-3">
-            <div class="card-header">
-              Date Here
-            </div>
-            <div class="card-body">
-              <br>
-              <p class="card-text">Temp</p>
-              <br>
-              <p class="card-text">Humidity</p>
-            </div>
+          <div class="card-header">
+            Date Here
           </div>
+          <div class="card-body">
+            <br>
+            <p class="card-text">Temp</p>
+            <br>
+            <p class="card-text">Humidity</p>
+          </div>
+        </div>
           
 
 
@@ -93,7 +100,7 @@
 
     <!-- Optional JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>  
+    <script src="script.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
