@@ -19,32 +19,30 @@
       <h1 class="text-center">Weather Dashboard</h1>
     </nav>
     
+
     <div class="row">
-      <!-- Side navigation -->
-      <div class="col-2">
-        <div class="sidenav bg-light">
-          <!-- Search Bar -->
-          <form class="m-3">
+      <!-- Sidebar -->
+      <div class="col-2 bg-light vh-100">
+        <div class="m-3">
+          <form>
             <label>
               <h3 class="text-weight-bold">Search for a City:</h3>
             </label>
-            <br>
             <input type="text" name="citySearch">
-            <br>
-            <input type="submit" value="Search">
+            <input id="add-city" type="submit" value="Search">
           </form>
               
-          <a href="#">Saved</a>
-          <a href="#">Cities</a>
-          <a href="#">Go</a>
-          <a href="#">Here</a>
-        </div>    
+          <div id="btn-list">
+
+          </div>
+
+        </div>
       </div>
   
 
       <!-- Main Display -->
       <div class="col-10">
-        <div class="card text-block bg-light m-3">
+        <div class="card text-block bg-light w-50 mt-3">
           <div class="card-header">
             <h2>
             City and Date Here
@@ -60,82 +58,31 @@
             <br>
             <p class="card-text">UV Index</p>
           </div>
-
         <!-- END CARD -->
         </div>
+
+        <!-- FIVE DAY FORECAST CARDS -->
+        <div class="card text-white bg-primary float-left mt-3 mr-3">
+            <div class="card-header">
+              Date Here
+            </div>
+            <div class="card-body">
+              <br>
+              <p class="card-text">Temp</p>
+              <br>
+              <p class="card-text">Humidity</p>
+            </div>
+          </div>
+          
+
+
+
+
       <!-- END COL-10 -->
       </div>
     <!-- END ROW -->
     </div>    
 
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col-2">
-        <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
-          <div class="card-header">
-            Date Here
-          </div>
-          <div class="card-body">
-            <i>Icon</i>
-            <p class="card-text">Temp</p>
-            <br>
-            <p class="card-text">Humidity</p>
-          </div>
-        </div>      
-      </div>
-      <div class="col-2">
-        <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
-          <div class="card-header">
-            Date Here
-          </div>
-          <div class="card-body">
-            <i>Icon</i>
-            <p class="card-text">Temp</p>
-            <br>
-            <p class="card-text">Humidity</p>
-          </div>
-        </div>      
-      </div>
-      <div class="col-2">
-        <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
-          <div class="card-header">
-            Date Here
-          </div>
-          <div class="card-body">
-            <i>Icon</i>
-            <p class="card-text">Temp</p>
-            <br>
-            <p class="card-text">Humidity</p>
-          </div>
-        </div>      
-      </div>
-      <div class="col-2">
-        <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
-          <div class="card-header">
-            Date Here
-          </div>
-          <div class="card-body">
-            <i>Icon</i>
-            <p class="card-text">Temp</p>
-            <br>
-            <p class="card-text">Humidity</p>
-          </div>
-        </div>      
-      </div>
-      <div class="col-2">
-        <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
-          <div class="card-header">
-            Date Here
-          </div>
-          <div class="card-body">
-            <i>Icon</i>
-            <p class="card-text">Temp</p>
-            <br>
-            <p class="card-text">Humidity</p>
-            </div>
-          </div>      
-        </div>
-    </div>
     
     
 

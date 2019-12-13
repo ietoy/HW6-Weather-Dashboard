@@ -1,36 +1,5 @@
-.sidenav {
-    height: 100%;
-    /* width: 350px; */
-    position: fixed;
-    z-index: 1;
-    top: 72px;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Style page content */
-  .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
+button {
+    width: 100%;
+    margin-top: 5px;
+    font-weight: bold;
+}
