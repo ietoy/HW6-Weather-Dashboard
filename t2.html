@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="t2.css">
+
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-dark bg-dark text-center">
+        <!-- Navbar content -->
+        <h1 class=" text-light">Weather Dashboard</h1>
+      </nav>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-3 bg-light vh-100">
+        <div class="m-2">
+          <h4>Search for a city:</h4>
+            <form class="form-inline">
+              <div class="form-group mb-2">
+                <input class="form-control" placeholder="City Name">
+              </div>
+              <button id="new-city" type="submit" class="btn btn-primary mb-2">Submit</button>
+            </form>
+          <div id="btn-list">
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="card m-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <!-- DISPLAY CURRENT CITY IMG HERE -->
+              <!-- <img src="..." class="card-img" alt="City Image"> -->
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 id="city-name" class="card-title">City Name</h3>
+                  <p id="city-temp" class="card-text">Temp here</p>
+                  <p id="city-humidity" class="card-text">Humidity here</p>
+                  <p id="city-windspeed" class="card-text">Wind Speed here</p>
+                  <p id="city-uvindex" class="card-text">UV Index here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-3">
+          <h4>5-Day Forecast:</h4>    
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- My JavaScript -->
+    <script src="t2.js"></script>
+</body>
+</html>

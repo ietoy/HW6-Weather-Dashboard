@@ -48,6 +48,8 @@ function renderBtns() {
 
     $("#five-day").empty();
 
+    console.log("I work!")
+
     currentCity = $(this).attr("data-city");
     var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
