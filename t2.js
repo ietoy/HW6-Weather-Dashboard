@@ -67,6 +67,19 @@ $(document).ready(function() {
       // set the currently displayed city to the top of the main display
       $("#city-name").append(currentCity);
 
+      // set a new variable that looks at the icon infomration in the weather array of the results
+      var iconName;
+      iconName = results.weather[0].icon;
+      var iconImg;
+      iconImg = "assets/" + iconName + ".png";
+
+      // create a new <img> tag, set the source equal to the iconImg, then append it to the current city name
+      var curIcon;
+      curIcon = $("<img>");
+      curIcon.attr("src", iconImg);
+      $("#city-name").append(curIcon);
+
+
       // set new variables for each component of the weather information being displayed, then set those variables to be equal to their corresponding part of the response object, then append that information to the main display at the corressponding id tag
       var cityTemp;
       cityTemp = results.main.temp;
