@@ -49,6 +49,7 @@ $(document).ready(function() {
     $("#city-windspeed").empty();
     $("#city-uvindex").empty();
 
+
     // query the openweathermap api
     currentCity = $(this).attr("data-city");
     var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
@@ -60,66 +61,75 @@ $(document).ready(function() {
       method: "GET"
     }).then(function(response) {
       console.log(response);
-
       // store the response as a new variable, results
       var results = response;
-
       // set the currently displayed city to the top of the main display
       $("#city-name").append(currentCity);
-
       // set a new variable that looks at the icon infomration in the weather array of the results
       var iconName;
-      iconName = results.weather[0].icon;
+          iconName = results.weather[0].icon;
       var iconImg;
-      iconImg = "assets/" + iconName + ".png";
-
+          iconImg = "assets/" + iconName + ".png";
       // create a new <img> tag, set the source equal to the iconImg, then append it to the current city name
       var curIcon;
-      curIcon = $("<img>");
-      curIcon.attr("src", iconImg);
+          curIcon = $("<img>");
+          curIcon.attr("src", iconImg);
       $("#city-name").append(curIcon);
-
-
       // set new variables for each component of the weather information being displayed, then set those variables to be equal to their corresponding part of the response object, then append that information to the main display at the corressponding id tag
       var cityTemp;
-      cityTemp = results.main.temp;
+          cityTemp = results.main.temp;
       $("#city-temp").append("Temperature: " + cityTemp);
       var cityHumidity;
-      cityHumidity = results.main.humidity;
+          cityHumidity = results.main.humidity;
       $("#city-humidity").append("Humidity: " + cityHumidity);
       var cityWindSpeed;
-      cityWindSpeed = results.wind.speed;
+          cityWindSpeed = results.wind.speed;
       $("#city-windspeed").append("Wind Speed: " + cityWindSpeed);
+        // then, we make a second ajax call to pull the uv index based on the current latitude and longitude
+        var lat;
+            lat = results.coord.lat;
+        var lon;
+            lon = results.coord.lon;
 
-      // then, we make a second ajax call to pull the uv index based on the current latitude and longitude
-      var lat;
-      lat = results.coord.lat;
-      var lon;
-      lon = results.coord.lon;
+        // var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
+        var UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+        
+        // make the second ajax call, then throw the uv index to the dom by appending it to the element with the corresponding id tag
+        $.ajax({
+          url: UVqueryURL,
+          method: "GET"
+        }).then(function(response) {
+          var cityUV;
+          cityUV = response.value;
+          $("#city-uvindex").append("UV Index: " + cityUV);
+        });
 
-      // var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
-      var UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
-      
-      // make the second ajax call, then throw the uv index to the dom by appending it to the element with the corresponding id tag
-      $.ajax({
-        url: UVqueryURL,
-        method: "GET"
-      }).then(function(response) {
-        var cityUV;
-        cityUV = response.value;
-        $("#city-uvindex").append("UV Index: " + cityUV);
-      });
-
+      // render5day();
     });
+  };
+
+  function render5day() {
+
+    $("#five-day").empty();
+
+
+    var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCity + "&units=imperial&appid=" + APIKey;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var results = response;
+      console.log(results)
 
 
 
 
-
+    })
 
   };
 
-  // showCity();
 
 
 })
