@@ -1,23 +1,29 @@
+// This tells the JS to run only once the html has loaded
 $(document).ready(function() {
 
   // This array will hold our list of searched cities
   var cityList = []; 
 
-
+  // This function displays all of the buttons displayed searched locations in the sidebar
   function renderBtns() {
+    // first it empties the element with the id "#btn-list"
     $("#btn-list").empty();
+    // It then loops through the array of cityList where we are storing our searched cities as a variable
     for (var i = 0; i < cityList.length; i++) {
+      // we create a new button and define it as a newBtn variable
       var newBtn = $("<button>");
+      // we set the text of that new buton to be the city we are currently looking at in the array
       var btnText = cityList[i];
+      // We set new attributes for that city btton
       newBtn.attr("type", "button");
-      newBtn.attr("class", "btn");
-      newBtn.attr("class", "btn-secondary");
-      newBtn.attr("class", "city-btn");
+      newBtn.addClass("btn btn-secondary city-btn");
       newBtn.attr("data-city", cityList[i]);
       newBtn.text(btnText);
+      // then we finally add that new button to the "#btn-list" element
       $("#btn-list").append(newBtn);
     };
   };
+
 
   $("#new-city").on("click", function() {
     event.preventDefault();
@@ -29,7 +35,7 @@ $(document).ready(function() {
             cityList.push(newCity);
             renderBtns();
         };
-    console.log(cityList);
+    // console.log(cityList);
   });
 
 
@@ -60,7 +66,7 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      console.log(response);
+      // console.log(response);
       // store the response as a new variable, results
       var results = response;
       // set the currently displayed city to the top of the main display
@@ -104,13 +110,13 @@ $(document).ready(function() {
           $("#city-uvindex").append("UV Index: " + cityUV);
         });
 
-      // render5day();
+      render5day();
     });
   };
 
   function render5day() {
 
-    $("#five-day").empty();
+    // $("#five-day").empty();
 
 
     var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
@@ -121,9 +127,44 @@ $(document).ready(function() {
       method: "GET"
     }).then(function(response) {
       var results = response;
-      console.log(results)
+      console.log(results);
+
+      $("#five-day-display").empty();
+
+      var newCard = $("<div>");
+      newCard.attr("class", "col-md-2");
+
+      var cardStyle = $("<div>");
+      cardStyle.addClass("card text-white bg-primary mt-3 mr-3");
+
+        var cardHeader = $("<div>");
+        cardHeader.addClass("card-header");
+        cardHeader.text("TEST DATE")
+        cardStyle.append(cardHeader);
+
+        var cardBody = $("<div>");
+        cardBody.addClass("card-body");
+        cardBody.append("<br>");
+
+          var temp = $("<p>");
+          temp.addClass("card-text");
+          temp.text("TEST TEMP");
+          cardBody.append(temp);
+
+        cardBody.append("<br>");
+
+          var humidity =$("<p>");
+          humidity.addClass("card-text")
+          humidity.text("TEST HUMIDITY")
+          cardBody.append(humidity);
+
+        cardStyle.append(cardBody);
+
+      newCard.append(cardStyle)
 
 
+
+      $("#five-day-display").append(newCard);
 
 
     })
