@@ -54,9 +54,6 @@ $(document).ready(function() {
   // This on click listener runs the showCity function whenever a button with the city-btn class is clicked
   $(document).on("click", ".city-btn", showCity);
 
-
-  
-
   function showCity() {
 
     // clear previous city information
