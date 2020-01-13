@@ -2,7 +2,19 @@
 $(document).ready(function() {
 
   // This array will hold our list of searched cities
-  var cityList = []; 
+  var cityList = [];
+
+  var currentCity;
+
+  // displays the current date by the current city name using the Date() object
+  var today = new Date();
+  var mainDate = (
+    (today.getMonth() + 1) + "/" + 
+    (today.getDate()) + "/" + 
+    (today.getFullYear())
+  );
+
+  var lastDate = today.getDate();
 
   // This function displays all of the buttons displayed searched locations in the sidebar
   function renderBtns() {
@@ -29,13 +41,13 @@ $(document).ready(function() {
     event.preventDefault();
     var newCity;
     newCity = $("input").val();
+    
         if (cityList.includes(newCity)) {
-            console.log("You've already searched " + newCity + ".")
+            // console.log("You've already searched " + newCity + ".")
         } else {
             cityList.push(newCity);
             renderBtns();
         };
-    // console.log(cityList);
   });
 
 
@@ -43,8 +55,7 @@ $(document).ready(function() {
   $(document).on("click", ".city-btn", showCity);
 
 
-
-  var currentCity;
+  
 
   function showCity() {
 
@@ -54,7 +65,6 @@ $(document).ready(function() {
     $("#city-humidity").empty();
     $("#city-windspeed").empty();
     $("#city-uvindex").empty();
-
 
     // query the openweathermap api
     currentCity = $(this).attr("data-city");
@@ -71,6 +81,8 @@ $(document).ready(function() {
       var results = response;
       // set the currently displayed city to the top of the main display
       $("#city-name").append(currentCity);
+      $("#city-name").append(" " + mainDate);
+
       // set a new variable that looks at the icon infomration in the weather array of the results
       var iconName;
           iconName = results.weather[0].icon;
@@ -97,7 +109,6 @@ $(document).ready(function() {
         var lon;
             lon = results.coord.lon;
 
-        // var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
         var UVqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
         
         // make the second ajax call, then throw the uv index to the dom by appending it to the element with the corresponding id tag
@@ -116,9 +127,6 @@ $(document).ready(function() {
 
   function render5day() {
 
-    // $("#five-day").empty();
-
-
     var APIKey = "acc7c144d8d4d67c3bafe14ef897170e";
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCity + "&units=imperial&appid=" + APIKey;
 
@@ -127,50 +135,49 @@ $(document).ready(function() {
       method: "GET"
     }).then(function(response) {
       var results = response;
-      console.log(results);
+      var list = results.list;
 
       $("#five-day-display").empty();
 
-      var newCard = $("<div>");
-      newCard.attr("class", "col-md-2");
+      for (var i = 4; i < list.length; i += 8) {
+        
+        var tempVal = list[i].main.temp;
+        var humidityVal = list[i].main.humidity;
+                
+        lastDate += 1;
 
-      var cardStyle = $("<div>");
-      cardStyle.addClass("card text-white bg-primary mt-3 mr-3");
+        var newCard = $("<div>");
+        newCard.attr("class", "col-md-2");
+          var cardStyle = $("<div>");
+          cardStyle.addClass("card text-white bg-primary mt-3 mr-3");
+            var cardHeader = $("<div>");
+            cardHeader.addClass("card-header");
+            cardHeader.text(
+              today.getMonth() + "/" +
+              lastDate + "/" + 
+              today.getFullYear()
+            );
+            cardStyle.append(cardHeader);
+            var cardBody = $("<div>");
+            cardBody.addClass("card-body");
+            cardBody.append("<br>");
+              var temp = $("<p>");
+              temp.addClass("card-text");
+              temp.text("Temp: " + tempVal);
+              cardBody.append(temp);
+            cardBody.append("<br>");
+              var humidity =$("<p>");
+              humidity.addClass("card-text")
+              humidity.text("Humidity: " + humidityVal)
+              cardBody.append(humidity);
+          cardStyle.append(cardBody);
+        newCard.append(cardStyle)
+        $("#five-day-display").append(newCard);
 
-        var cardHeader = $("<div>");
-        cardHeader.addClass("card-header");
-        cardHeader.text("TEST DATE")
-        cardStyle.append(cardHeader);
-
-        var cardBody = $("<div>");
-        cardBody.addClass("card-body");
-        cardBody.append("<br>");
-
-          var temp = $("<p>");
-          temp.addClass("card-text");
-          temp.text("TEST TEMP");
-          cardBody.append(temp);
-
-        cardBody.append("<br>");
-
-          var humidity =$("<p>");
-          humidity.addClass("card-text")
-          humidity.text("TEST HUMIDITY")
-          cardBody.append(humidity);
-
-        cardStyle.append(cardBody);
-
-      newCard.append(cardStyle)
-
-
-
-      $("#five-day-display").append(newCard);
-
+      };
 
     })
 
   };
-
-
 
 })
